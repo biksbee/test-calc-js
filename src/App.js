@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+
+import MainEnter from "./components/enter/MainEnter";
+import MainResult from "./components/result/MainResult";
 
 function App() {
+
+  const [res, setRes] = useState([])
+  const [show, setShow] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="w-screeen h-screen flex justify-center">
+          <div className="xl:w-[1200px] w-full flex xx:flex-row flex-col items-center pt-[100px]">
+              <MainEnter setRes={setRes} setShow={setShow}/>
+              {
+                show === false ?
+                  null 
+                : 
+                  <MainResult res={res}/>
+              }
+          </div>
     </div>
   );
 }
